@@ -6,11 +6,12 @@ option(FORWARD_LINK_ORDER "The order of source files which affects the order of 
 
 add_executable(test)
 
+target_sources(test PRIVATE main.cpp)
+
 if(FORWARD_LINK_ORDER)
     message("LINK ORDER: FORWARD")
     target_sources(test
         PRIVATE
-            main.cpp
             one.cpp
             two.cpp
         )
@@ -18,7 +19,6 @@ else()
     message("LINK ORDER: BACKWARD")
     target_sources(test
         PRIVATE
-            main.cpp
             two.cpp
             one.cpp
         )
